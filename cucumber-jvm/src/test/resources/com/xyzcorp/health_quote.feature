@@ -42,3 +42,13 @@ Feature: As a stake holder, we should analyze our accepted risk given
     And the health risk includes High-Blood-Pressure, High-Blood-Sugar
     When all the factors are taken into consideration
     Then the quote risk should be 5
+
+  Scenario: A person, over 30, and under 40, in excellent health
+     should be provided a quote with a 2 risk.
+
+    Given a prospect
+    And a birth date of 1976-02-01
+    And a current date of 2016-05-01
+    And the health risk list is empty
+    When all the factors are taken into consideration
+    Then the quote risk should be 2

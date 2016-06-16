@@ -6,10 +6,14 @@ import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 
+import java.util.ArrayList;
 import java.util.List;
+
+import static org.junit.Assert.assertEquals;
 
 public class HealthQuoteSpecification {
     Prospect prospect;
+    int calculatedRisk;
 
     @Given("^a prospect$")
     public void a_prospect() throws Throwable {
@@ -18,12 +22,12 @@ public class HealthQuoteSpecification {
 
     @When("^all the factors are taken into consideration$")
     public void all_the_factors_are_taken_into_consideration() throws Throwable {
-        throw new PendingException();
+        calculatedRisk = prospect.getRisk();
     }
 
     @Then("^the quote risk should be (\\d)$")
     public void the_quote_risk_should_be(int risk) throws Throwable {
-        throw new PendingException();
+       assertEquals(risk, calculatedRisk);
     }
 
     @And("^a birth date of (\\d+)-(\\d+)-(\\d+)$")
@@ -33,12 +37,13 @@ public class HealthQuoteSpecification {
 
     @And("^a current date of (\\d+)-(\\d+)-(\\d+)$")
     public void a_current_date(int year, int month, int day) throws Throwable {
-        throw new PendingException();
+        prospect.setCurrentDate(year, month, day);
     }
 
     @And("^the health risk list is empty$")
     public void the_health_risk_list_is_empty() throws Throwable {
-        throw new PendingException();
+        //Nothing will be added
+        //prospect.setHealthRisk(new ArrayList());
     }
 
     @And("^the health risk includes (.*)$")
